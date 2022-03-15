@@ -10,3 +10,6 @@
 9. Hash
 10. Graghp, Graghp Traversal
 11. Dynamic programming,Minimum Cost Path
+
+
+C로 자료구조를 공부를 하고, 그 뒤 C++로 다시 한번 더 자료구조를 공부하여 정리를 하였습니다.
