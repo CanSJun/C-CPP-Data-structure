@@ -4,39 +4,39 @@ using namespace std;
 
 
 /*
-¤·¿ì¼±¼øÀ§ Å¥(priority_queue);
--°¢°¢ÀÇ µ¥ÀÌÅÍ¿¡ ¿ì¼±¼øÀ§(priority)°¡ Á¤ÀÇµÇ¾î ÀÖ¾î¼­, µ¥ÀÌÅÍ ÀÔ·Â ¼ø¼­¿¡ »ó°ü¾øÀÌ ¿ì¼±¼øÀ§°¡ °¡Àå ³ôÀº µ¥ÀÌÅÍ°¡ ¸ÕÀú Ãâ·ÂµÇ´Â ÇüÅÂÀÇ ÀÚ·á±¸Á¶ÀÌ´Ù.
--ÀÏ¹Ý ¼±ÀÔ¼±Ãâ(FIFO) Å¥ : Å¥¿¡ ¸Ó¹«¸¥ ½Ã°£À» ¿ì¼±¼øÀ§·Î ¼³Á¤ÇÏ¸é. ÀÏ¹Ý Å¥¿Í °°ÀÌ µ¿ÀÛÇÏ°Ô µÈ´Ù.
+ã…‡ìš°ì„ ìˆœìœ„ í(priority_queue);
+-ê°ê°ì˜ ë°ì´í„°ì— ìš°ì„ ìˆœìœ„(priority)ê°€ ì •ì˜ë˜ì–´ ìžˆì–´ì„œ, ë°ì´í„° ìž…ë ¥ ìˆœì„œì— ìƒê´€ì—†ì´ ìš°ì„ ìˆœìœ„ê°€ ê°€ìž¥ ë†’ì€ ë°ì´í„°ê°€ ë¨¼ì € ì¶œë ¥ë˜ëŠ” í˜•íƒœì˜ ìžë£Œêµ¬ì¡°ì´ë‹¤.
+-ì¼ë°˜ ì„ ìž…ì„ ì¶œ(FIFO) í : íì— ë¨¸ë¬´ë¥¸ ì‹œê°„ì„ ìš°ì„ ìˆœìœ„ë¡œ ì„¤ì •í•˜ë©´. ì¼ë°˜ íì™€ ê°™ì´ ë™ìž‘í•˜ê²Œ ëœë‹¤.
 
-¤·¿ì¼±¼øÀ§ Å¥ ±¸Çö ¹æ¹ý
+ã…‡ìš°ì„ ìˆœìœ„ í êµ¬í˜„ ë°©ë²•
 
-±¸Çö¹æ¹ý						»ðÀÔ						»èÁ¦
-¼ø¼­¾ø´Â ¹è¿­				O(1)-¹è¿­ÀÇ ¸Ç¸¶Áö¸·             O(n) 
-¼ø¼­ ¾ø´Â ¿¬°á¸®½ºÆ®		O(1)-¼øÂ÷Å½»öÀ» ÇØ¾ßÇÏ±â ¶§¹®	O(n)
-Á¤·ÄµÈ ¹è¿­					O(n)-ÀÌÁøÅ½»öÀ¸·Î Ã£À» ¼ö ÀÖÀ½	O(1)
-Á¤·ÄµÈ ¿¬°á¸®½ºÆ®			O(n)-¼±Çü,¼øÂ÷Å½»ö	     		O(1)
-Èü							O(log n)						O(log n)
+êµ¬í˜„ë°©ë²•						ì‚½ìž…						ì‚­ì œ
+ìˆœì„œì—†ëŠ” ë°°ì—´				O(1)-ë°°ì—´ì˜ ë§¨ë§ˆì§€ë§‰             O(n) 
+ìˆœì„œ ì—†ëŠ” ì—°ê²°ë¦¬ìŠ¤íŠ¸		O(1)-ìˆœì°¨íƒìƒ‰ì„ í•´ì•¼í•˜ê¸° ë•Œë¬¸	O(n)
+ì •ë ¬ëœ ë°°ì—´					O(n)-ì´ì§„íƒìƒ‰ìœ¼ë¡œ ì°¾ì„ ìˆ˜ ìžˆìŒ	O(1)
+ì •ë ¬ëœ ì—°ê²°ë¦¬ìŠ¤íŠ¸			O(n)-ì„ í˜•,ìˆœì°¨íƒìƒ‰	     		O(1)
+íž™							O(log n)						O(log n)
 
-¤·priority_queue
-<queue>¿¡ ÀúÀå µÇ¾îÀÖÀ½
+ã…‡priority_queue
+<queue>ì— ì €ìž¥ ë˜ì–´ìžˆìŒ
 
 template < class T, class container = std::vector<T>, class Compare = std:less<T>>
 class priority_queue
 
--¿ì¼±¼øÀ§ Å¥ÀÇ ±â´ÉÀ» Á¦°øÇÏ´Â ÄÁÅ×ÀÌ³Ê ¾î´ðÅÍÀÌ´Ù
--»ðÀÔ ¼ø¼­¿¡ »ó°ü¾øÀÌ ¿ì¼±¼øÀ§°¡ °¡Àå ³ôÀº(±âº»ÀûÀ¸·Î °ªÀÌ °¡Àå Å«) ¿ø¼Ò°¡ ¸ÕÀú Ãâ·ÂµÈ´Ù
--»ç¿ëÀÚ Á¤ÀÇ Å¸ÀÔÀ» ÀúÀåÇÒ °æ¿ì, ºñ±³¿¬»êÀ» Áö¿øÇØ¾ßÇÔ.
+-ìš°ì„ ìˆœìœ„ íì˜ ê¸°ëŠ¥ì„ ì œê³µí•˜ëŠ” ì»¨í…Œì´ë„ˆ ì–´ëŒ‘í„°ì´ë‹¤
+-ì‚½ìž… ìˆœì„œì— ìƒê´€ì—†ì´ ìš°ì„ ìˆœìœ„ê°€ ê°€ìž¥ ë†’ì€(ê¸°ë³¸ì ìœ¼ë¡œ ê°’ì´ ê°€ìž¥ í°) ì›ì†Œê°€ ë¨¼ì € ì¶œë ¥ëœë‹¤
+-ì‚¬ìš©ìž ì •ì˜ íƒ€ìž…ì„ ì €ìž¥í•  ê²½ìš°, ë¹„êµì—°ì‚°ì„ ì§€ì›í•´ì•¼í•¨.
 
--ÁÖ¿ä ¸â¹öÇÔ¼ö
-priority_queu::push(e) -- ¿ì¼±¼øÀ§ Å¥¿¡ ¿ø¼Ò e¸¦ Ãß°¡ O(log n)
-priority_queu::pop() --- ¿ì¼±¼øÀ§ Å¥ÀÇ ÃÖ»óÀ§ ¿ø¼Ò¸¦ Á¦°Å O(log n)
-priority_queu::top() ---- ¿ì¼±¼øÀ§ Å¥ÀÇ ÃÖ»óÀ§ ¿ø¼Ò¸¦ ÂüÁ¶ O(1)
+-ì£¼ìš” ë©¤ë²„í•¨ìˆ˜
+priority_queu::push(e) -- ìš°ì„ ìˆœìœ„ íì— ì›ì†Œ eë¥¼ ì¶”ê°€ O(log n)
+priority_queu::pop() --- ìš°ì„ ìˆœìœ„ íì˜ ìµœìƒìœ„ ì›ì†Œë¥¼ ì œê±° O(log n)
+priority_queu::top() ---- ìš°ì„ ìˆœìœ„ íì˜ ìµœìƒìœ„ ì›ì†Œë¥¼ ì°¸ì¡° O(1)
 
 */
 
-/*
+
 template<typename T>
-void print_queue(T q) { // ÂüÁ¶°¡¾Æ´Ï´Ï º¹»çÇØ¼­ Ãâ·ÂÇÑ´ÙÇØµµ ¿ø·¡¾ÖµéÀº º¯°æµÇÁö ¾ÊÀ½.
+void print_queue(T q) { // ì°¸ì¡°ê°€ì•„ë‹ˆë‹ˆ ë³µì‚¬í•´ì„œ ì¶œë ¥í•œë‹¤í•´ë„ ì›ëž˜ì• ë“¤ì€ ë³€ê²½ë˜ì§€ ì•ŠìŒ.
 
 	while (!q.empty()) {
 		cout << q.top() << " , ";
@@ -58,8 +58,8 @@ public:
 int main() {
 
 	vector<int> vec{ 4,2,3,5,1 };
-	priority_queue<int> pq1(vec.begin(), vec.end()); // Å«°ªÀÌ ¿ì¼±¼øÀ§°¡ ³ô´Ù
-	priority_queue<int,vector<int>,greater<int>> pq2(vec.begin(), vec.end()); // ÀÛÀº°ªÀÌ ¿ì¼±¼øÀ§°¡ µÈ´Ù
+	priority_queue<int> pq1(vec.begin(), vec.end()); // í°ê°’ì´ ìš°ì„ ìˆœìœ„ê°€ ë†’ë‹¤
+	priority_queue<int,vector<int>,greater<int>> pq2(vec.begin(), vec.end()); // ìž‘ì€ê°’ì´ ìš°ì„ ìˆœìœ„ê°€ ëœë‹¤
 	print_queue(pq1);
 	print_queue(pq2);
 
@@ -68,7 +68,7 @@ int main() {
 	students.push({ "B" ,40 });
 	students.push({ "C" ,95 });
 	students.push({ "D" ,70 });
-	//ºñ±³¸¦À§ÇÑ °´Ã¼°¡ ÇÊ¿äÇÏ´Ù ºÎµîÈ£ ¿À¹ö·Îµù ÇÊ¿ä
+	//ë¹„êµë¥¼ìœ„í•œ ê°ì²´ê°€ í•„ìš”í•˜ë‹¤ ë¶€ë“±í˜¸ ì˜¤ë²„ë¡œë”© í•„ìš”
 	while (!students.empty()) {
 		auto& s = students.top();
 		cout << s.name << " ( " << s.score << " )" << endl;
@@ -76,4 +76,4 @@ int main() {
 	}
 
 
-}*/
+}
