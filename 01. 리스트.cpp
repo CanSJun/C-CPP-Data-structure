@@ -3,6 +3,7 @@
 using namespace std;
 
 /*
+//
 ㅇList란? : 순서를 가진 데이터를 모임이다.
 ex)요일 (일요일 ,월요일, 토요일)
 
